@@ -22,23 +22,24 @@ public class SpellingBee {
 	 */
 	
 	void stuffForYouToDo() {
-		// Write your code here...
+		
+		
 		
 		
 		
 	}
 
-	public String getRandomWord() {
+	public static String getRandomWord() {
 		return words.get(new Random().nextInt(lines));
 	}
 	
-	public void speak(String words) {
+	public static void speak(String words) {
 		SpeechSynthesizer speaker = new SpeechSynthesizer("speaker");
 		speaker.synthesize(words);
 	}
 
-	private int lines;
-	private ArrayList<String> words = new ArrayList<>();
+	private static int lines;
+	private static ArrayList<String> words = new ArrayList<>();
 
 	public SpellingBee() {
 		try {
@@ -61,6 +62,11 @@ public class SpellingBee {
 
 	public static void main(String[] args) {
 		new SpellingBee();
+		
+		String word = getRandomWord();
+		speak(getRandomWord());
+		
+		
 	}
 
 }
