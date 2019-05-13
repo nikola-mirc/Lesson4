@@ -21,10 +21,8 @@ public class SpellingBee {
 	 * need to write code in is the stuffForYouToDo() method.
 	 */
 
-	
 	// having a bit of trouble with this one.
-	
-	
+
 	void stuffForYouToDo() {
 
 		try {
@@ -39,9 +37,8 @@ public class SpellingBee {
 
 				{
 
-					String spell1 = JOptionPane.showInputDialog(null, "Try again");
+					spell = JOptionPane.showInputDialog(null, "Try again");
 					speak(rw);
-					spell = spell1;
 
 				}
 				if (spell.equalsIgnoreCase(rw)) {
@@ -52,7 +49,9 @@ public class SpellingBee {
 		}
 
 		catch (Exception e) {
-			e.printStackTrace();
+			
+			System.out.println("user has quit.");
+			JOptionPane.showMessageDialog(null, "bye.");
 		}
 	}
 
