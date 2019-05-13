@@ -10,9 +10,40 @@ import javax.swing.JOptionPane;
 public class AnimalFarm {
 
 	AnimalFarm() {
-		/* 1. Ask the user which animal they want, then play the sound of that animal. */
 
-		/* 2. Make it so that the user can keep entering new animals. */
+		String animal = JOptionPane.showInputDialog("Which animal do you wanna hear?");
+
+		try {
+
+			for (int i = 0;; i++) {
+
+				if (animal.equalsIgnoreCase("cow")) {
+					playMoo();
+					animal = JOptionPane.showInputDialog("Let's try again.");
+				} else if (animal.equalsIgnoreCase("duck")) {
+					playQuack();
+					animal = JOptionPane.showInputDialog("Let's try again.");
+				} else if (animal.equalsIgnoreCase("dog")) {
+					playWoof();
+					animal = JOptionPane.showInputDialog("Let's try again.");
+				} else if (animal.equalsIgnoreCase("cat")) {
+					playMeow();
+					animal = JOptionPane.showInputDialog("Let's try again.");
+				} else if (animal.equalsIgnoreCase("llama")) {
+					playLlama();
+					animal = JOptionPane.showInputDialog("Let's try again.");
+				} else {
+					JOptionPane.showMessageDialog(null, "No such animal in this farm for now.");
+					animal = JOptionPane.showInputDialog("Let' try again.");
+
+				}
+
+			}
+
+		} catch (Exception e) {
+
+			JOptionPane.showMessageDialog(null, "Bye.");
+		}
 
 	}
 
@@ -28,13 +59,19 @@ public class AnimalFarm {
 		playNoise(woofFile);
 	}
 
+	void playMeow() {
+		playNoise(meowFile);
+	}
+
+	void playLlama() {
+		playNoise(llamaFile);
+	}
+
 	String quackFile = "sound/quack.wav";
 	String mooFile = "sound/moo.wav";
 	String woofFile = "sound/woof.wav";
 	String meowFile = "sound/meow.wav";
 	String llamaFile = "sound/llama.wav";
-
-	/* Ignore this stuff */
 
 	public void playNoise(String soundFile) {
 		try {

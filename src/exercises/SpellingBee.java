@@ -20,36 +20,65 @@ public class SpellingBee {
 	 * word, but if they do not spell it right ask again. The only place that you
 	 * need to write code in is the stuffForYouToDo() method.
 	 */
+
+	
+	// having a bit of trouble with this one.
+	
 	
 	void stuffForYouToDo() {
-		
-		
-		
-		
-		
+
+		try {
+
+			for (int i = 0;; i++) {
+
+				String rw = getRandomWord();
+				speak(rw);
+				String spell = JOptionPane.showInputDialog(null, "How do you spell this word");
+
+				while (!spell.equalsIgnoreCase(rw))
+
+				{
+
+					String spell1 = JOptionPane.showInputDialog(null, "Try again");
+					speak(rw);
+					spell = spell1;
+
+				}
+				if (spell.equalsIgnoreCase(rw)) {
+					JOptionPane.showMessageDialog(null, "Correct.");
+
+				}
+			}
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	public static String getRandomWord() {
+	public String getRandomWord() {
 		return words.get(new Random().nextInt(lines));
 	}
-	
-	public static void speak(String words) {
+
+	public void speak(String words) {
 		SpeechSynthesizer speaker = new SpeechSynthesizer("speaker");
 		speaker.synthesize(words);
 	}
 
-	private static int lines;
-	private static ArrayList<String> words = new ArrayList<>();
+	private int lines;
+	private ArrayList<String> words = new ArrayList<>();
 
 	public SpellingBee() {
 		try {
 			// Get the amount of lines
-			LineNumberReader lnr = new LineNumberReader(new FileReader(new File("/usr/share/dict/words")));
+			LineNumberReader lnr = new LineNumberReader(
+					new FileReader(new File("C:\\Users\\n1kola\\JavaFundamentals\\Lesson4\\lib", "randomwords.txt")));
 			lnr.skip(Long.MAX_VALUE);// Skip to the end
 			lines = lnr.getLineNumber();// Get last line number
 			System.out.println(lines + " words loaded.");
 			lnr.close();
-			BufferedReader br = new BufferedReader(new FileReader(new File("/usr/share/dict/words")));
+			BufferedReader br = new BufferedReader(
+					new FileReader(new File("C:\\Users\\n1kola\\JavaFundamentals\\Lesson4\\lib", "randomwords.txt")));
 			for (int i = 0; i < lines; i++) {
 				words.add(br.readLine()); // adds every line to the array
 			}
@@ -62,11 +91,6 @@ public class SpellingBee {
 
 	public static void main(String[] args) {
 		new SpellingBee();
-		
-		String word = getRandomWord();
-		speak(getRandomWord());
-		
-		
 	}
 
 }

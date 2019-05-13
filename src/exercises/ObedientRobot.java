@@ -13,11 +13,10 @@ public class ObedientRobot {
 		for (int i = 0; i < 36; i++) {
 
 			r2d2.setPenWidth(20);
-			r2d2.setSpeed(20000);
+			r2d2.setSpeed(100);
 			r2d2.penDown();
-			r2d2.turn(10);
-			;
 			r2d2.move(10);
+			r2d2.turn(10);
 
 		}
 	}
@@ -27,7 +26,7 @@ public class ObedientRobot {
 		for (int i = 0; i < 4; i++) {
 
 			r2d2.setPenWidth(20);
-			r2d2.setSpeed(200);
+			r2d2.setSpeed(100);
 			r2d2.penDown();
 			r2d2.move(200);
 			r2d2.turn(90);
@@ -41,7 +40,7 @@ public class ObedientRobot {
 		for (int i = 0; i < 3; i++) {
 
 			r2d2.setPenWidth(20);
-			r2d2.setSpeed(200);
+			r2d2.setSpeed(100);
 			r2d2.penDown();
 			r2d2.move(200);
 			r2d2.turn(120);
@@ -53,10 +52,6 @@ public class ObedientRobot {
 	public static void main(String[] args) {
 		int shape = JOptionPane.showOptionDialog(null, "Which shape would you like me to draw?", "Obedient Robot", 0,
 				JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Circle", "Square", "Triangle" }, null);
-		/*
-		 * Create methods to draw a circle, square and triangle and call the appropriate
-		 * one depending on the user choice.
-		 */
 
 		new ObedientRobot();
 
